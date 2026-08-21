@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Face Recognition Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI Face Recognition System</h1>
+            <p>Upload an image or capture from webcam to verify identity.</p>
+        </header>
+
+        <main class="dashboard">
+            <!-- Left Panel: Input Methods -->
+            <section class="card input-section">
+                <h2>1. Provide Image</h2>
+                
+                <!-- File Upload -->
+                <div class="upload-box">
+                    <input type="file" id="imageInput" accept="image/*" hidden>
+                    <label for="imageInput" class="btn secondary-btn">Choose Image</label>
+                    <span id="fileName">No file selected</span>
+                </div>
+
+                <div class="divider">OR</div>
+
+                <!-- Live Camera Feed -->
+                <div class="webcam-box">
+                    <video id="webcam" autoplay playsinline></video>
+                    <canvas id="canvas" hidden></canvas>
+                    <button id="startCamBtn" class="btn secondary-btn">Open Camera</button>
+                    <button id="captureBtn" class="btn secondary-btn" disabled>Capture Snapshot</button>
+                </div>
+
+                <button id="analyzeBtn" class="btn primary-btn" disabled>Analyze Face</button>
+            </section>
+
+            <!-- Right Panel: Results & Match Info -->
+            <section class="card result-section">
+                <h2>2. Recognition Result</h2>
+                <div class="preview-area">
+                    <img id="imagePreview" src="" alt="Preview" hidden>
+                    <div id="placeholderText">Upload or capture an image to view results</div>
+                </div>
+
+                <div id="resultBox" class="result-box hidden">
+                    <div class="status-badge" id="statusBadge">Pending</div>
+                    <p><strong>Name:</strong> <span id="resName">--</span></p>
+                    <p><strong>Confidence:</strong> <span id="resConfidence">--%</span></p>
+                    <p><strong>Bounding Box:</strong> <span id="resBox">--</span></p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
